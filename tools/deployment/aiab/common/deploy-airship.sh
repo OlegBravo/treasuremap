@@ -67,6 +67,8 @@ NODE_NET_IFACE=${NODE_NET_IFACE:-""}
 # Allowance for Genesis/Armada to settle in seconds:
 POST_GENESIS_DELAY=${POST_GENESIS_DELAY:-60}
 
+NODE_SUBNETS=${NODE_SUBNETS:-""}
+
 # Command shortcuts
 PEGLEG="${REPO_DIR}/tools/airship pegleg"
 SHIPYARD="${REPO_DIR}/tools/airship shipyard"
@@ -150,6 +152,8 @@ data:
   hostip: ${HOSTIP}
   hostcidr: ${HOSTCIDR}
   interface: ${NODE_NET_IFACE}
+  interface_gw: ${NODE_NET_IFACE_GATEWAY_IP}
+  subnets: ${NODE_SUBNETS}
   maas-ingress: '192.169.1.5/32'
 EOF
 }
@@ -205,6 +209,10 @@ function generate_genesis() {
 }
 
 function run_genesis() {
+  # do not override /etc/hosts
+  cp /etc/hosts /etc/hosts.save
+  sed -i -e 's|# Disable swap|cp /etc/hosts.save /etc/hosts|g' ${WORKSPACE}/genesis/genesis.sh
+
   # Runs the genesis script that was generated
   ${WORKSPACE}/genesis/genesis.sh
 }
@@ -319,6 +327,7 @@ function print_dashboards() {
   HORIZON_PORT=$(kubectl -n openstack get service horizon-dashboard -o jsonpath="{.spec.ports[0].nodePort}")
   MAAS_PORT=$(kubectl -n ucp get service maas-region-ui -o jsonpath="{.spec.ports[0].nodePort}")
   MASS_PASS=$(awk '/^data:/ {print $2}' ${WORKSPACE}/treasuremap/site/${TARGET_SITE}/secrets/passphrases/ucp_maas_admin_password.yaml)
+  HORIZON_PASS=$(awk '/^data:/ {print $2}' ${WORKSPACE}/treasuremap/site/${TARGET_SITE}/secrets/passphrases/osh_horizon_oslo_db_password.yaml)
   set +x
   echo " "
   echo "OpenStack Horizon dashboard is available on this host at the following URL:"
@@ -329,7 +338,7 @@ function print_dashboards() {
   echo "Credentials:"
   echo "  Domain: default"
   echo "  Username: admin"
-  echo "  Password: password"
+  echo "  Password: ${HORIZON_PASS}"
   echo " "
   echo "OpenStack CLI commands could be launched via \`./openstack\` script, e.g.:"
   echo "  # cd ${WORKSPACE}/treasuremap/tools/"
