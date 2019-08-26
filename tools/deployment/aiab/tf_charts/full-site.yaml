@@ -30,16 +30,27 @@ data:
     - ucp-divingbell
     - ucp-armada
     - ucp-deckhand
-    - ucp-drydock
+    - ucp-drydock-scaled
     - ucp-promenade
     - ucp-shipyard
+    - ucp-prometheus-openstack-exporter
+    - osh-infra-ingress-controller
+    - osh-infra-ceph-config
+    - osh-infra-radosgw
+    - osh-infra-logging
+    - osh-infra-monitoring
+    - osh-infra-mariadb
+    - osh-infra-dashboards
     - openstack-ingress-controller
+    - openstack-ceph-config
+    - openstack-tenant-ceph
     - openstack-mariadb
-    - openstack-rabbitmq
     - openstack-memcached
     - openstack-keystone-aiab
+    - openstack-radosgw
     - openstack-glance-aiab
     - openstack-compute-kit-aiab
     - openstack-heat-aiab
+    - osh-infra-prometheus-openstack-exporter
     - openstack-horizon
 ...
