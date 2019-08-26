@@ -130,8 +130,8 @@ data:
         subpath: helm-toolkit
         type: git
       heat:
-        location: https://opendev.org/openstack/openstack-helm
-        reference: cd460f12c289c45516c5a5bc3083319f3e783eb4
+        location: https://github.com/OlegBravo/treasuremap
+        reference: 0d666cf48e446d9a5aa82aa97a3845dc2bab15c8
         subpath: heat
         type: git
       heat-htk:
