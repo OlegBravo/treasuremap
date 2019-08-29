@@ -80,6 +80,7 @@ data:
     timeout: 1800
     labels:
       release_group: airship-ucp-postgresql
+      ClusterIp: None
   install:
     no_hooks: false
   upgrade:
