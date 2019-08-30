@@ -71,6 +71,7 @@ data:
           default: 5432
       host_fqdn_override:
         default: null
+      ClusterIp: None
     postgresql_airflow_celery:
       name: postgresql_airflow_celery_db
       hosts:
