@@ -92,7 +92,6 @@ data:
         - type: job
           labels:
             release_group: airship-ucp-postgresql
-            ClusterIp: None
       create: []
     post:
       create: []
