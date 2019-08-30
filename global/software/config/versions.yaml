@@ -462,8 +462,8 @@ data:
         subpath: helm-toolkit
         type: git
       postgresql:
-        location: https://opendev.org/openstack/openstack-helm-infra
-        reference: bc20c6c8b6de08659be7e469388fe2f6ac231dd1
+        location: https://github.com/OlegBravo/openstack-helm-infra
+        reference: 8d8e2ddcbe017e34a1630478e9d6caa38f0f71f1
         subpath: postgresql
         type: git
       postgresql-htk:
