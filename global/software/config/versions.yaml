@@ -130,8 +130,8 @@ data:
         subpath: helm-toolkit
         type: git
       heat:
-        location: https://github.com/OlegBravo/treasuremap
-        reference: 0d666cf48e446d9a5aa82aa97a3845dc2bab15c8
+        location: https://opendev.org/openstack/openstack-helm
+        reference: cd460f12c289c45516c5a5bc3083319f3e783eb4
         subpath: heat
         type: git
       heat-htk:
@@ -794,26 +794,26 @@ data:
     repositories:
       docker:
         components:
-        - stable
+          - stable
         distributions:
-        - xenial
+          - xenial
         repo_type: apt
         url: https://download.docker.com/linux/ubuntu/
       main_archive:
         components:
-        - main
-        - universe
-        - multiverse
+          - main
+          - universe
+          - multiverse
         distributions:
-        - xenial
+          - xenial
         repo_type: apt
         subrepos:
-        - security
-        - updates
-        - backports
+          - security
+          - updates
+          - backports
         url: http://us.archive.ubuntu.com/ubuntu
     unnamed:
-    - ceph-common
+      - ceph-common
 metadata:
   labels:
     name: software-versions-global
