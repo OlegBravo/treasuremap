@@ -97,17 +97,23 @@ export NODE_SUBNETS=`python -c "import ipaddress; print str(ipaddress.ip_network
 replace_charts() {
 echo "Applying TungstenFabric compatibility patch"
 
-rm -rf ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/openstack-compute-kit
-rm -rf ${AIAB_DIR}/../../../gloval/sofware/config/versions.yaml
+# TODO fix password applying - change it at keystone , instead of clients
+# replace passwords for clinets - change password123 to password
+find ${AIAB_DIR}/../../../site/aiab/secrets/passphrases -type f  -exec sed -i 's/password123/password/g' {} \;
+#also change base64-encoded password
+sed -i 's/cGFzc3dvcmQxMjM=/cGFzc3dvcmQK=/g' ${AIAB_DIR}/../../../global/secrets/passphrases/private_docker_key.yaml
+
+rm -rf  ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/openstack-keystone  ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/openstack-compute-kit
 
 mv ${AIAB_DIR}/tf_charts/bootstrap.yaml ${AIAB_DIR}/../../../site/${TARGET_SITE}/manifests/bootstrap.yaml
 mv ${AIAB_DIR}/tf_charts/common-addresses.yaml ${AIAB_DIR}/../../../site/${TARGET_SITE}/networks/common-addresses.yaml
 mv ${AIAB_DIR}/tf_charts/full-site.yaml  ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/full-site.yaml
 mv ${AIAB_DIR}/tf_charts/genesis.yaml ${AIAB_DIR}/../../../site/${TARGET_SITE}/profiles/genesis.yaml
+mv ${AIAB_DIR}/tf_charts/endpoints.yaml  ${AIAB_DIR}/../../../type/sloop/config/endpoints.yaml
 
+cp -r  ${AIAB_DIR}/tf_charts/openstack-compute-kit ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/openstack-compute-kit
 cp -r  ${AIAB_DIR}/tf_charts/versions.yaml ${AIAB_DIR}/../../../global/software/config/versions.yaml
-cp -r ${AIAB_DIR}/tf_charts/ingress ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/kubernetes/
-cp -r ${AIAB_DIR}/tf_charts/openstack-compute-kit ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/
+cp -r  ${AIAB_DIR}/tf_charts/ingress ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/kubernetes/
 cp -r  ${AIAB_DIR}/tf_charts/openstack-keystone ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/
 cp -r  ${AIAB_DIR}/tf_charts/tf ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/
 echo "Charts where  replaced "
