@@ -111,7 +111,7 @@ mv ${AIAB_DIR}/tf_charts/full-site.yaml  ${AIAB_DIR}/../../../site/${TARGET_SITE
 mv ${AIAB_DIR}/tf_charts/genesis.yaml ${AIAB_DIR}/../../../site/${TARGET_SITE}/profiles/genesis.yaml
 mv ${AIAB_DIR}/tf_charts/endpoints.yaml  ${AIAB_DIR}/../../../type/sloop/config/endpoints.yaml
 
-cp -r  ${AIAB_DIR}/tf_charts/openstack-compute-kit ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/openstack-compute-kit
+cp -r  ${AIAB_DIR}/tf_charts/openstack-compute-kit ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/
 cp -r  ${AIAB_DIR}/tf_charts/versions.yaml ${AIAB_DIR}/../../../global/software/config/versions.yaml
 cp -r  ${AIAB_DIR}/tf_charts/ingress ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/kubernetes/
 cp -r  ${AIAB_DIR}/tf_charts/openstack-keystone ${AIAB_DIR}/../../../site/${TARGET_SITE}/software/charts/osh/
