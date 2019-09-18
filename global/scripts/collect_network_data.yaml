@@ -1,0 +1,27 @@
+---
+schema: pegleg/Script/v1
+metadata:
+  schema: metadata/Document/v1
+  name: collect-network-data
+  storagePolicy: cleartext
+  layeringDefinition:
+    abstract: false
+    layer: global
+data: |-
+  #!/bin/bash
+
+  apt-get update
+  apt-get install -y python-setuptools ntp
+  easy_install pip
+  pip install ipaddress
+
+  NODE_NET_IFACE_GATEWAY_IP="$(ip route get 1 | awk '/1.0.0.0/{print $3}')"
+  NODE_NET_IFACE=$(ip route get 1 | grep -o "dev.*" | awk '{print $2}')
+  NODE_NET_IFACE_GATEWAY_IP="$(ip route get 1 | awk '/1.0.0.0/{print $3}')"
+  if_cidr=`ip addr | grep -A 3 $NODE_NET_IFACE | awk '/inet /{print $2}'`
+  export NODE_SUBNETS=`python -c "import ipaddress; print str(ipaddress.ip_network(u'$if_cidr', strict=False))"`
+
+      cat << EOF >> /home/ubuntu/treasuremap/site/aiab/deployment/dev-configurables.yaml
+      interface_gw: ${NODE_NET_IFACE_GATEWAY_IP}
+      subnets: ${NODE_SUBNETS}
+      EOF

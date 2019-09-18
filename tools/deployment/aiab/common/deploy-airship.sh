@@ -152,8 +152,8 @@ data:
   hostip: ${HOSTIP}
   hostcidr: ${HOSTCIDR}
   interface: ${NODE_NET_IFACE}
-  interface_gw: ${NODE_NET_IFACE_GATEWAY_IP}
-  subnets: ${NODE_SUBNETS}
+#  interface_gw: ${NODE_NET_IFACE_GATEWAY_IP}
+#  subnets: ${NODE_SUBNETS}
   maas-ingress: '192.169.1.5/32'
 EOF
 }
