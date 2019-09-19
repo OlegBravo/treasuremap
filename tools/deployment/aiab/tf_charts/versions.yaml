@@ -216,7 +216,7 @@ data:
         type: git
       nova:
         location: https://github.com/OlegBravo/openstack-helm
-          reference: 0fab0b53d45f71c5dfd7ee4317a0be59c63186f7
+        reference: 0fab0b53d45f71c5dfd7ee4317a0be59c63186f7
         subpath: nova
         type: git
       nova-htk:
