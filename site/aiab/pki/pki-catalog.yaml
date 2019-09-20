@@ -92,7 +92,7 @@ data:
           hosts:
             - localhost
             - 127.0.0.1
-            - 10.96.0.1
+            - 10.100.0.1
           kubernetes_service_names:
             - kubernetes.default.svc.cluster.local
         - document_name: kubelet-genesis
@@ -144,7 +144,7 @@ data:
             - 127.0.0.1
             - localhost
             - kubernetes-etcd.kube-system.svc.cluster.local
-            - 10.96.0.2
+            - 10.100.0.2
     calico-etcd:
       description: Certificates for Calico etcd client traffic
       certificates:
