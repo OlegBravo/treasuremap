@@ -113,7 +113,7 @@ data:
     # etcd service IP
     etcd_service_ip: 10.96.0.2
     # k8s pod CIDR (network which pod traffic will traverse)
-    pod_cidr: 192.168.32.0/19
+    pod_cidr: 192.168.0.0/19
     # k8s service CIDR (network which k8s API traffic will traverse)
     service_cidr: 192.168.32.0/19
     # misc k8s port settings
