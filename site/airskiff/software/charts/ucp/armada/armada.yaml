@@ -25,7 +25,7 @@ data:
   values:
     images:
       tags:
-        api: quay.io/airshipit/armada:latest-ubuntu_xenial
+        api: quay.io/airshipit/armada:54406d8f96bad9682ffc0c878423a5e0bddfc51a-ubuntu_xenial
     pod:
       replicas:
         api: 1
