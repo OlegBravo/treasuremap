@@ -25,7 +25,7 @@ data:
   values:
     images:
       tags:
-        api: quay.io/airshipit/deckhand:a4850f8c4fc02dd1971282c6d9e4beb9cd5be320-ubuntu_xenial
+        api: quay.io/airshipit/deckhand:latest-ubuntu_xenial
     pod:
       replicas:
         deckhand: 1
