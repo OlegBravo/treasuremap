@@ -463,7 +463,7 @@ data:
         type: git
       postgresql:
         location: https://opendev.org/openstack/openstack-helm-infra
-        reference: 5e1ecd9840397bf9e8829ce0d98fcb721db1b74e
+        reference: bc20c6c8b6de08659be7e469388fe2f6ac231dd1
         subpath: postgresql
         type: git
       postgresql-htk:
@@ -473,7 +473,7 @@ data:
         type: git
       promenade:
         location: https://opendev.org/airship/promenade
-        reference: 89f9842b2ec428709a05fd0a8d4cd1796043375d
+        reference: bc20c6c8b6de08659be7e469388fe2f6ac231dd1
         subpath: charts/promenade
         type: git
       promenade-htk:
