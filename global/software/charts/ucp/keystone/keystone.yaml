@@ -92,6 +92,12 @@ metadata:
         name: ucp_keystone_admin_password
         path: .
     - dest:
+        path: .values.endpoints.keystone.auth.password
+      src:
+        schema: deckhand/Passphrase/v1
+        name: ucp_keystone_admin_password
+        path: .
+    - dest:
         path: .values.endpoints.oslo_messaging.auth.keystone.password
       src:
         schema: deckhand/Passphrase/v1
