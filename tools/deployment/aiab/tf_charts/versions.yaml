@@ -131,7 +131,7 @@ data:
         type: git
       heat:
         location: https://github.com/OlegBravo/openstack-helm
-        reference: 9f4c3fd0c6b72a721fdf452178b489d69c6ad30c
+        reference: f3cff7e76375dad675a935b024d963dd8f228e93
         subpath: heat
         type: git
       heat-htk:
